@@ -1,0 +1,82 @@
+from construct import (
+    Struct,
+    Int64un,
+    Int32un,
+    Int32sn,
+    Int16un,
+    Int8un,
+    BitStruct,
+    Padding,
+    Flag,
+)
+from .utils import GUID
+
+
+FileAttributesFlags = BitStruct(
+    "FILE_ATTRIBUTE_READONLY" / Flag,
+    "FILE_ATTRIBUTE_HIDDEN" / Flag,
+    "FILE_ATTRIBUTE_SYSTEM" / Flag,
+    "Reserved1" / Flag,
+    "FILE_ATTRIBUTE_DIRECTORY" / Flag,
+    "FILE_ATTRIBUTE_ARCHIVE" / Flag,
+    "Reserved2" / Flag,
+    "FILE_ATTRIBUTE_NORMAL" / Flag,
+    "FILE_ATTRIBUTE_TEMPORARY" / Flag,
+    "FILE_ATTRIBUTE_SPARSE_FILE" / Flag,
+    "FILE_ATTRIBUTE_REPARSE_POINT" / Flag,
+    "FILE_ATTRIBUTE_COMPRESSED" / Flag,
+    "FILE_ATTRIBUTE_OFFLINE" / Flag,
+    "FILE_ATTRIBUTE_NOT_CONTENT_INDEXED" / Flag,
+    "FILE_ATTRIBUTE_ENCRYPTED" / Flag,
+    Padding(17),
+)
+
+HotKeyFlags = Struct("LowByte" / Int8un, "HighByte" / Int8un)
+
+LinkFlags = BitStruct(
+    "HasLinkTargetIDList" / Flag,
+    "HasLinkInfo" / Flag,
+    "HasName" / Flag,
+    "HasRelativePath" / Flag,
+    "HasWorkingDir" / Flag,
+    "HasArguments" / Flag,
+    "HasIconLocation" / Flag,
+    "IsUnicode" / Flag,
+    "ForceNoLinkInfo" / Flag,
+    "HasExpString" / Flag,
+    "RunInSeparateProcess" / Flag,
+    "Unused1" / Flag,
+    "HasDarwinID" / Flag,
+    "RunAsUser" / Flag,
+    "HasExpIcon" / Flag,
+    "NoPidlAlias" / Flag,
+    "Unused2" / Flag,
+    "RunWithShimLayer" / Flag,
+    "ForceNoLinkTrack" / Flag,
+    "EnableTargetMetadata" / Flag,
+    "DisableLinkPathTracking" / Flag,
+    "DisableKnownFolderTracking" / Flag,
+    "DisableKnownFolderAlias" / Flag,
+    "AllowLinkToLink" / Flag,
+    "UnaliasOnSave" / Flag,
+    "PreferEnvironmentPath" / Flag,
+    "KeepLocalIDListForUNCTarget" / Flag,
+    Padding(5),
+)
+
+ShellLinkHeader = Struct(
+    "HeaderSize" / Int32un,
+    "LinkCLSID" / GUID,
+    "LinkFlags" / LinkFlags,
+    "FileAttributesFlags" / FileAttributesFlags,
+    "CreationTime" / Int64un,
+    "AccessTime" / Int64un,
+    "WriteTime" / Int64un,
+    "FileSize" / Int32un,
+    "IconIndex" / Int32sn,
+    "ShowCommand" / Int32un,
+    "HotKey" / HotKeyFlags,
+    "Reserved1" / Int16un,
+    "Reserved2" / Int32un,
+    "Reserved3" / Int32un,
+)

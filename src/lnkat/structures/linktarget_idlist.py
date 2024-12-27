@@ -1,0 +1,24 @@
+from construct import Struct, Bytes, GreedyRange, Int16ul, this
+
+
+ROOT_LOCATIONS = {
+    "20D04FE0-3AEA-1069-A2D8-08002B30309D": "MY_COMPUTER",
+    "450D8FBA-AD25-11D0-98A8-0800361B1103": "MY_DOCUMENTS",
+    "54a754c0-4bf1-11d1-83ee-00a0c90dc849": "NETWORK_SHARE",
+    "c0542a90-4bf0-11d1-83ee-00a0c90dc849": "NETWORK_SERVER",
+    "208D2C60-3AEA-1069-A2D7-08002B30309D": "NETWORK_PLACES",
+    "46e06680-4bf0-11d1-83ee-00a0c90dc849": "NETWORK_DOMAIN",
+    "871C5380-42A0-1069-A2EA-08002B30309D": "INTERNET",
+    "645FF040-5081-101B-9F08-00AA002F954E": "RECYCLE_BIN",
+    "21EC2020-3AEA-1069-A2DD-08002B30309D": "CONTROL_PANEL",
+    "59031A47-3F72-44A7-89C5-5595FE6B30EE": "USERPROFILE",
+    "4234D49B-0245-4DF3-B780-3893943456E1": "APPS",
+}
+
+
+# TODO: parse undocumented structures in `Data` field
+ItemID = Struct("ItemIDSize" / Int16ul, "Data" / Bytes(this.ItemIDSize - 2))
+
+LinkTargetIDList = Struct(
+    "IDListSize" / Int16ul, "IDList" / GreedyRange(ItemID), "TerminalID" / Int16ul
+)
