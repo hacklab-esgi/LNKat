@@ -1,6 +1,5 @@
 from construct import (
     Struct,
-    Int64un,
     Int32un,
     Int32sn,
     Int16un,
@@ -9,7 +8,7 @@ from construct import (
     Padding,
     Flag,
 )
-from .utils import GUID
+from .utils import GUID, FileTime
 
 
 FileAttributesFlags = BitStruct(
@@ -69,9 +68,9 @@ ShellLinkHeader = Struct(
     "LinkCLSID" / GUID,
     "LinkFlags" / LinkFlags,
     "FileAttributesFlags" / FileAttributesFlags,
-    "CreationTime" / Int64un,
-    "AccessTime" / Int64un,
-    "WriteTime" / Int64un,
+    "CreationTime" / FileTime,
+    "AccessTime" / FileTime,
+    "WriteTime" / FileTime,
     "FileSize" / Int32un,
     "IconIndex" / Int32sn,
     "ShowCommand" / Int32un,
