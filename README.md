@@ -16,8 +16,8 @@
 ```
 
 The goal to develop LNKat is to get a versatil tool which can be used for :  
-- Malware analysis : read and analyse LNK files  
-- Offensive tactics : generate malicious LNK payloads  
+- Malware triage : read and analyse LNK files  
+- Offensive tactics : generate malicious `.lnk` payloads  
 
 And it would be create to provide an API to be integred with other tools.
 
@@ -26,8 +26,23 @@ And it would be create to provide an API to be integred with other tools.
 Couldn't find any viable tool on Linux to generate malicious LNK files.  
 And I wanna play with the `construct` library and the `rye` tooling.
 
+The generator capability would be useful to build any kink of LNK-related attacks.
+
+## Installation
+
+The recommanded way is to use `pipx` :
+```sh
+pipx install git+https://github.com/hacklab-esgi/LNKat
+```
+
 ## Usage
 
+Once installed on your system, use the following command to analyse:
+```sh
+lnkat <file_path>
+```
+
+### Example
 Test with our samples :  
 ```sh
 lnkat samples/calc.exe.lnk
@@ -57,6 +72,18 @@ Third milestone for QoL :
 - [ ] Modify existing file as `cat input.lnk | lnkat.py > output.lnk`
 - [ ] Configuration files
 - [ ] More to come
+
+## Contributing
+
+This projet is using the [`rye`](https://rye.astral.sh/) tool for project and package management.
+
+All the parsing logic **must** be written inside `Construct`'s structs, mostly using the `Adapter` class.
+
+Please review the contribution guide at `.github/CONTRIBUTION.md`.
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Credits
 
