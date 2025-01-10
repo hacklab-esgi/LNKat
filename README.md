@@ -79,7 +79,7 @@ This project is using [`rye`](https://rye.astral.sh/) for project and package ma
 
 All the parsing logic **must** be written inside `Construct`'s structs, mostly using the `Adapter` class.
 
-Please review the contribution guide [`CONTRIBUTION.md`](.github/CONTRIBUTION.md).
+Please review the contribution guide [`CONTRIBUTING.md`](.github/CONTRIBUTING.md).
 
 ## License
 
