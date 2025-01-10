@@ -26,7 +26,7 @@ And it would be create to provide an API to be integred with other tools.
 Couldn't find any viable tool on Linux to generate malicious LNK files.  
 And I wanna play with the `construct` library and the `rye` tooling.
 
-The generator capability would be useful to build any kink of LNK-related attacks.
+The generator capability would be useful to build any kind of LNK-related attacks.
 
 ## Installation
 
@@ -75,16 +75,16 @@ Third milestone for QoL :
 
 ## Contributing
 
-This projet is using the [`rye`](https://rye.astral.sh/) tool for project and package management.
+This project is using [`rye`](https://rye.astral.sh/) for project and package management.
 
 All the parsing logic **must** be written inside `Construct`'s structs, mostly using the `Adapter` class.
 
-Please review the contribution guide at `.github/CONTRIBUTION.md`.
+Please review the contribution guide [`CONTRIBUTION.md`](.github/CONTRIBUTION.md).
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information.
 
 ## Credits
 
-- https://github.com/strayge/pylnk : Big thanks to parse undocumented structures
+- https://github.com/strayge/pylnk : For inspiration and undocumented structures
